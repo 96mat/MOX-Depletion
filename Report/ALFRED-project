@@ -1,0 +1,255 @@
+\documentclass[a4paper,12pt,notitlepage]{article}
+\raggedbottom % lascia alla fine delle pagine lo spazio invece che adattarle
+
+
+% pacchetti da caricare
+\usepackage[T1]{fontenc} % definisce i caratteri di output
+\usepackage[utf8]{inputenc} % definisce i caratteri di input
+\usepackage[english]{babel} % definisce la lingua del documento
+\usepackage[headheight=15pt]{geometry} % definisce i margini del documento
+\geometry{a4paper,top=30mm,bottom=30mm,left=30mm,right=25mm,heightrounded,bindingoffset=3mm}
+\usepackage{fancyhdr} % serve per gestire intestazione e piè di pagina
+\pagestyle{fancy}
+\usepackage{emptypage} % serve per fare le pagine vuote
+%\usepackage[pdftex]{hyperref} % serve per ottenere links e indice cliccabili
+%\hypersetup{colorlinks=true,allcolors=black}
+\usepackage{microtype} % migliora la scrittura del testo
+\usepackage{appendix} % serve per personalizzare l'appendice
+\usepackage[printonlyused]{acronym} % serve per creare l'elenco degli acronimi
+\usepackage{eurosym} % serve per scrivere il singolo dell'euro
+\usepackage{siunitx} % serve per mettere le unita` di misura nel SI
+\usepackage{mathtools} % serve per fare le formule matematiche (carica anche AMSMATH)
+\usepackage{amsmath}
+\usepackage{booktabs} % serve per fare le tabelle più belle
+\usepackage{multirow} % serve per fare le tabelle con righe complesse
+\usepackage{pgfplotstable} % serve per fare tabelle da file con dati tabulati
+\usepackage{graphicx} % serve per fare le figure
+\usepackage{tikz} % serve per fare i grafici
+\usepackage{pgfplots} % serve a fare i grafici anche lui
+\pgfplotsset{compat=1.14}
+\usepackage{subcaption} % serve per aggiungere la didascalia alle figure composte (carica anche CAPTION)
+\captionsetup{font=small,labelsep=period,format=hang,tableposition=top,figureposition=bottom}
+\usepackage{tocloft} % serve per fare le liste di figure e tabelle più belle
+\usepackage{cite} % serve per mettere le citazioni bibliografiche
+
+
+\usepackage{bm} %per fare le equazioni in Bold
+
+
+%% Header della section ----------
+\usepackage{titleps}
+\newpagestyle{classica}{%
+\sethead{}{}{\sectiontitle\quad|\quad\thepage}
+}
+%---------------------------------
+
+%% stile delle \autoref-----
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%---------------------------------
+
+\usepackage{amssymb} %per simboli di logica matematica
+\DeclareMathOperator{\natnums}{\mathbb{N}}
+%----------------------------------------
+%code listing Style
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b, %posizione della caption "t=top", "b=bottom"                   
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+%-----------------
+\usepackage{verbatim}
+%----------
+
+% modifiche dei comandi
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} % modifica l'intestazione con il nome/numero del capitolo
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}} % modifica l'intestazione con il nome/numero dela sezione
+\renewcommand{\cftfigfont}{Figura } % per aggiungere "Figure " nella lista delle figure
+\renewcommand{\cfttabfont}{Tabella } % per aggiungere "Table " nella lista delle tabelle
+
+
+
+% dichiarazioni personalizzate
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert} % per fare il valore assoluto
+\DeclarePairedDelimiter{\norma}{\lVert}{\rVert} % per fare la norma
+%Tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{document}
+
+%\frontmatter % serve per mettere i numeri romani come numeri di pagina 
+\thispagestyle{empty} % serve per rimuovere tutte le impostazioni delle pagine dalla prima pagina
+
+% FRONTESPIZIO
+\begin{center}
+% Intestazione
+\Large{\textbf{Politecnico di Milano}} \\
+\vspace{4mm}
+
+\normalsize{\Large\textsc{Nuclear Engineering - Nuclear Plants}} \\
+\vspace{5mm}
+\normalsize{NUCLEAR DESIGN AND TECHNOLOGY} \\
+\rule{\textwidth}{0.4pt}\noindent
+\vspace{5mm}
+\normalsize{\large\textit{Author:}}\\
+\normalsize{\large\textsc{Matteo Piccioni}}\\
+\vspace{5mm}
+\vspace{5mm}
+% Logo Politecnico
+\begin{figure}[h!]
+\centering
+\includegraphics[height=0.30\textheight]{images/logo_poli_bianco}
+\end{figure}
+\vspace{12mm}
+% Titolo Tesi
+\huge{\textbf{Multiphysic Fuel Pin Simulation in Fluent Helium for ALFRED Fast Nuclear Reactor }} \\
+\vspace{37mm}
+\end{center}
+
+% Relatore/Correlatore
+
+
+% Piè Di Pagina
+\begin{center}
+\rule{\textwidth}{0.4pt}
+\small{\textbf{Accademic Year 2024 -- 2025}}
+\end{center}
+
+\newpage
+\begin{abstract}
+    ALFRED reactor core is arranged in 171 Fuel Assemblies (FA) in turn divided in 126 fuel pins, control rods and dummy elements that act like neutron reflectors\cite{Fabrizio}. The coolant is Liquid Lead (Pb), sometimes blended with Bismuth (Bi) to decrease the fusion temperature of the solution (avoiding local solidification in the cold point of the core). Lead, primarily ${}^{208}\text{Pb}$ (together with his isotopes) is a profitable candidate due to its exceptional thermal capabilities and because is a well-known fast neutron multiplier regarding $(n,2n)$, $(n,3n)$, reactions. By these means Pb mixed with Lithium \cite{CANDIDO2021112920} is also the vector for Fusion reactors like ITER and DEMO. A fuel pin can be schematized as a coaxial cylinder the inner one the fuel pellet, outer one the cladding. The connection between the fuel pellet and the surrounding structure is assured by means of a spring and the filling volume (FV) is occupied by Helium-4 (${}^{4}\text{He})$ at $0.1[MPa]$ in order to maximize the heat extraction and mitigate the temperature gradient across the geometry. In this project thermal analysis, structural mechanics behaviour, fluid dynamics, transport and diffusion of species are investigated by a multiphysics and Montecarlo approach for He-Embrittlement and the Displacement Per Atom (DPA) assessment.
+\end{abstract}
+
+{\hypersetup{linkcolor=black}
+\tableofcontents}
+\newpage
+\section{Multiphysics Coupling}
+The fuel pin component can be considered as an ethereogeneous physical 2D-axial symmetric system composed of different materials, different physics involved and first-of-a-kind phenomena not observed in any other system where neutronics and therefore the temperature field act like the engine of a plethora of microscopic and macroscopic processes and accordingly several feedback mechanisms. In order to track and give a possible representation of this system a multiphysics approach has been selected employing the Finite Elements Method (FEM) formulation a standard for thermal and structural mechanics investigations since FEM method was originally developed in '40 specifically for mechanical analysis of components \cite{Liu2022}. Before going into a deep dive into the matter \autoref{fig:Physics coupling scheme} showcases the phenomena simulated during the project.
+
+
+
+\begin{center}
+\begin{figure}[ht!]
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Start};
+\node (dec1) [decision,below of=start,align=center,yshift=-2cm] {Heat Module \\in solids and fluids\\and Radiative Flux };
+\node (pro2b) [process, right of=dec1,align=center, xshift=3cm] {Computational\\Fluid Dynamics};
+\node (pro3b) [process, below of=pro2b, align=center] { Microfluids \\Creep-flow};
+\node (pro4b) [process, left of=dec1, xshift=-3cm,align=center] {Solid Mechanics};
+\node (pro5b) [process, below of=pro4b, xshift=0cm, align=center] {Thermal and Radiation\\ Creep};
+\node (pro6b) [process, below of=dec1,yshift=-2cm,align=center] {Transport and Diffusion \\ of Diluted Species};
+\node (stop) [startstop, below of=pro6b] {Stop};
+%Arrows
+%%Start
+\draw [arrow] (start)--(dec1);
+
+%%CFD
+\draw [arrow] ([yshift=-0.07cm]pro2b.west) -- ([yshift=-0.07cm]dec1.east);
+\draw [arrow] ([yshift=0.07cm]dec1.east) -- ([yshift=0.07cm]pro2b.west);
+%%CreepFlow
+\draw [arrow] ([xshift=-0.07cm]pro2b.south) -- ([xshift=-0.07cm]pro3b.north);
+\draw [arrow] ([xshift=0.07cm]pro3b.north) -- ([xshift=0.07cm]pro2b.south);
+%%TDS
+\draw [arrow] ([xshift=-0.07cm]dec1.south) -- ([xshift=-0.07cm]pro6b.north);
+\draw [arrow] ([xshift=0.07cm]pro6b.north) -- ([xshift=0.07cm]dec1.south);
+%%SolidMech
+\draw [arrow] ([yshift=-0.07cm]pro4b.east) -- ([yshift=-0.07cm]dec1.west);
+\draw [arrow] ([yshift=0.07cm]dec1.west) -- ([yshift=0.07cm]pro4b.east);
+%%TRCreep
+\draw [arrow] ([xshift=-0.07cm]pro4b.south) -- ([xshift=-0.07cm]pro5b.north);
+\draw [arrow] ([xshift=0.07cm]pro5b.north) -- ([xshift=0.07cm]pro4b.south);
+%%CFD-TDS
+\draw [arrow] (pro3b)|-(pro6b);
+\draw [arrow] (stop.east) -- ++(6cm,0) |- ([xshift=6cm]start.east) -- (start.east);
+
+\node (bigblock) [draw=black, below of=start,yshift=-3.06cm,xshift=-0.35cm,minimum width=14.5cm, minimum height=7.5cm, text centered] {};
+\draw [arrow] ([xshift=0.35cm]bigblock.south) -- (stop.north); % Adjusted arrow from bigblock to stop
+\end{tikzpicture}
+\caption{Physics coupling scheme, double arrows are \textit{Two-way coupled} equations, while the single arrow means \textit{One-way coupled} equations}
+\label{fig:Physics coupling scheme}
+\end{figure}
+\end{center}
+This model is solved by exploiting the \textit{Fully Coupled}\footnote{\textit{One-way coupled} indicates that one physics influences the following one but not the opposite, while \textit{Two-way coupled} considers that one physics is addressed to the input of the following one and the opposite} (direct algorithms) approach using the PARDISO direct algorithm for all the physics with the exception of the solution of the Diluted Species that are solved in \textit{Segregated} mode that is still a form of physical coupling but employing different algorithms (iterative ones) i.e. GMRES. This choice of a segregated approach for a 2D-axial symmetric model is unusual\cite{Multiphysics}, but mandatory for helping the convergence of a highly non-linear model this together with some other techniques makes the mathematical convergence feasible. The model's evolution in time is computed by the implicit BDF scheme up to $5^{th}$ order when possible. The mesh involved is a manually built one, "semi-structured" using rectangular mesh elements with a minimum size of $5\cdot 10^{-4}[mm]$ and a maximum of $0.1[mm]$ Mesh quality evaluated by the skewness is around 1 for most of the geometry.
+
+\subsection{Thermal Analysis}
+This analysis consider the time-dependent solution of the Heat-equation onto the whole geometry for solids and fluid plus the Fourier equation. The domains can be considered as follows, \textit{Fuel pellet} as $\Omega_F$ his boundaries $\partial \Omega_{F_{n}}$ where $n=i$ and $1\le i\le 4$. While the \textit{Cladding} domain as $\Omega_C$, its boundaries $\partial_{C_{n}}$ where $n=j$ with $1\le j \le 7$. The Helium domain is $\Omega_{He}$ and its relative boundaries $\partial_{He_n}$, while the spring domain is $\Omega_s$, the boundary $\partial_s$. Accordingly, the system of equations is:
+\begin{equation}
+    \begin{cases}
+            \rho(T) c_p(T)\frac{\partial T}{\partial t}+\rho(T) c_p(T) \mathbf{u}\cdot \nabla T+\nabla\cdot \mathbf{q} = Q &\qquad \text{in}\quad [\Omega_{F,C,s,He}]\times(t,T]\\
+        \mathbf{q}=-k(T)\nabla T &\qquad \text{in}\quad [\Omega_{F,C,s,He}]\times (t,T]\\
+        \mathbf{-n}\cdot \mathbf{q}=h(T_{ext}-T)  &\qquad \text{on}\quad \partial\Omega_{C_n}\times (t,T]\\
+        +IC
+    \end{cases}
+    \label{eq:HeatEquation}
+\end{equation}
+
+Initial Conditions are room temperature on the whole geometry imposed volumetric power in the fuel pellet and initial pressure of the helium domain $0.1[MPa]$. Moreover, in \eqref{eq:HeatEquation} density, specific heat and thermal conductivity are temperature dependent in a highly non-linear way. The heat transfer coefficient has been calculated a priori using correlations, the heat flux BC is applied only on the external boundaries of the cladding in order to simulate the heat extraction performed by the coolant, $T_{ext}=440 [^\circ C]$ being the mean temperature of the liquid Lead. While $Q$ is the power density of the fuel, moreover this term condensates in it all the power contributions of the model and the responsible of the equation coupling with fluid dynamics. Attention should be drawn to the vector $\mathbf{u}$ which is responsible for the coupling field with the mechanical displacement vector for solids and velocity field for the fluid domain together with the velocity field of the contaminants i.e. the fission gasses. All the material properties have been declared during the building of the dedicated material structures needed for the simulation.
+\subsection{Structural Mechanics}
+A special regard for this analysis has to be devoted since FEM were originally developed for structural problems worth mentioning in the \textit{Cantilever Beam} case study. However, for this project, the mechanical analysis has been performed on the fuel, cladding, and spring domains, the relative system of equations to be solved are
+\begin{equation}
+    \begin{cases}
+        \nabla \cdot S + \mathbf{F}_v=0 &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        S=S_{inel}+S_{el} &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \varepsilon=\frac{1}{2}\big[(\nabla\mathbf{u}^T+\nabla\mathbf{u})\big] &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \varepsilon_{el}=\epsilon-\varepsilon_{inel} &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \varepsilon_{inel}=\varepsilon_0+\varepsilon_{ext}+\varepsilon_{th}+\varepsilon_{hs}+\varepsilon_{ol}+\varepsilon_{cr}+\varepsilon_{vp}+\varepsilon_{ve} &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        S_{el}=\mathbf{C}:\varepsilon_{el} &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        S_{inel}=S_0+S_{ext}+S_q &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \mathbf{C}=\mathbf{C}(\nu,E) &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \varepsilon_{th}=\alpha(T-T_{ref}) &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \mathbf{F}_v=-\frac{\mathbf{K}}{v}(\mathbf{u}-\mathbf{u}_0) &\qquad \text{in}\quad [\Omega_{F,C,s}]\times(t,T]\\
+        \mathbf{u}=0 &\qquad \text{on}\quad \partial\Omega_{C_1}\\
+        + \text{free to expand} &\qquad \text{in}\quad \partial\Omega_{F,C,s}/\partial\Omega_{C_1}\\
+    \end{cases}
+\end{equation}
+
+As IC no displacement or loading where imposed body is originally unloaded. $S$ is the Piola second-order tensor. Only one constraint is applied as boundary condition that is displacement null on the top of the fuel pin while all the other boundaries are free to expand. $\mathbf{F}_v$ are the volume forces applied to a specific domain in this case the spring foundation that will contrast the force generated by the fuel expansion. Properties of materials like Young Modulus, Poisson ratio have been declared in the material properties
+\subsection{Fluid dynamics}
+\subsection{Transport and Diffusion of Diluted Species}
+\section{Montecarlo Analysis of the Fuel Pin}
+\section{Conclusions}
+
+
+
+
+
+
+
+
+\newpage
+
+
+%\cleardoublepage
+\bibliographystyle{IEEEtran}
+\bibliography{mybib.bib}
+%\addcontentsline{toc}{chapter}{References}
+\end{document}
